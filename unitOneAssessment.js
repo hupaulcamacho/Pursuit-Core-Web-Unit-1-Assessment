@@ -1,35 +1,101 @@
-let assert = require('assert')
+let assert = require('assert');
 
 // Question One:
 
 // Write a function called isOdd that returns whether or not a number is odd.
 // If something that is not a number is passed in, return false.
 
+const isOdd = (number) => {
+  if(number === 0) {
+    return false;
+  } else if(isNaN(number)) {
+    return false;
+  } else if(number % 2 === 0) {
+    return false;
+  } else if(number % 2 !== 0) {
+    return true;
+  }
+}
 
 // Uncomment out the next line to test your solution
-// runQ1Tests()
+runQ1Tests()
 
 
 // Question Two:
 
 // Write a function called numberOfDigits that returns how many digits are in a given number
 
+const numberOfDigits = (number) => {
+  var numArr = number.toString().split('');
+  var totalDigits = 0;
+  for (var i = 0; i < numArr.length; i++) {
+    totalDigits++;
+  } return totalDigits;
+}
+
 // Uncomment out the next line to test your solution
-// runQ2Tests()
+runQ2Tests()
 
 // Question Three:
 
 // Write a function called disemvowel that removes all of the vowels from a string.
 // Treat y as a consonant, not a vowel
 
+
+const disemvowel = (string) => {
+    var noVowels = []
+    var arr = string.split('');
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i] === 'a') {
+        arr[i] = ','
+      } else if (arr[i] === 'A') {
+        arr[i] = ','
+      } else if (arr[i] === 'e') {
+        arr[i] = ','
+      } else if (arr[i] === 'E') {
+        arr[i] = ','
+      } else if (arr[i] === 'i') {
+        arr[i] = ','
+      } else if (arr[i] === 'I') {
+        arr[i] = ','
+      } else if (arr[i] === 'o') {
+        arr[i] = ','
+      } else if (arr[i] === 'O') {
+        arr[i] = ','
+      } else if (arr[i] === 'u') {
+        arr[i] = ','
+      } else if (arr[i] === 'U') {
+        arr[i] = ','
+      } else {
+        noVowels.push(arr[i])
+      }
+    } return noVowels.join('')
+  }
+
 // Uncomment out the next line to test your solution
-// runQ3Tests()
+runQ3Tests()
 
 // Question Four:
 // Write a function called secondSmallest that returns the second smallest number in an array
 
+const secondSmallest = (array) => {
+  var smallestNum = 0;
+  for (var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array.length; j++) {
+      var currentNum = 0
+      if(array[i] < array[j]) {
+        currentNum = smallestNum
+        smallestNum = array[i]
+      }
+    } if (smallestNum > currentNum) {
+      smallestNum = currentNum
+    }
+  } return smallestNum
+  
+}
+
 // Uncomment out the next line to test your solution
-// runQ4Tests()
+runQ4Tests()
 
 // Question Five:
 // Write a function called getLocations that takes in an array of objects that look like the array below,
@@ -42,17 +108,41 @@ let assert = require('assert')
 // Sample output:
 // ["Algeria", "Belize", "China", "Denmark"]
 
+const getLocations = (array) => {
+  var locations = [];
+  for(var i = 0; i < array.length; i++) {
+    locations.push(array[i].location)
+  }
+  return locations
+}
+
 // Uncomment out the next line to test your solution
-// runQ5Tests()
+runQ5Tests()
 
 
 // Question Six:
 
 // Write a function called onlyOddStrings that takes in an array of strings as input and returns an array that only includes strings with an odd number of characters
 // Your function should use a higher-ordered function (e.g map, filter, reduce, every, sort) in its implementation
+const oddNumberStr = (str) => {
+  var sum = 0;
+  for(var i = 0; i < str.length; i++) {
+    sum++
+  }
+  return sum
+}
+const onlyOddStrings = (array) => {
+  var oddStrings = [];
+  for (var i = 0; i < array.length; i++) {
+    if(oddNumberStr(array[i]) % 2 === 1) {
+      oddStrings.push(array[i])
+    }
+  }
+  return oddStrings
+}
 
 // Uncomment out the next line to test your solution
-// runQ6Tests()
+runQ6Tests()
 
 
 // Question Seven:
@@ -66,12 +156,31 @@ let assert = require('assert')
 // let myDay = Day(80, "sunny")
 // myDay.getDescription() // returns "It is 80 degrees and sunny"
 
+class Day {
+  constructor(temperature, weather) {
+    this.temperature = temperature;
+    this.weather = weather;
+  }
+
+  getDescription() {
+    return `It is ${this.temperature} degrees and ${this.weather}`
+  }
+}
+
 //b.
 // Make a function called getAllDayDescriptions that takes in an array of Day objects and returns an array of their descriptions.  Use a higher-ordered function (e.g map, filter, reduce, every, sort) in your implementation.
 // The output should be in the same order as the input
 
+const getAllDayDescriptions = (array) => {
+  var descriptions = [];
+  for(var i = 0; i < array.length; i++) {
+    descriptions.push(array[i].getDescription())
+  }
+  return descriptions
+}
+
 // Uncomment out the next line to test your solution
-// runQ7Tests()
+runQ7Tests()
 
 
 
